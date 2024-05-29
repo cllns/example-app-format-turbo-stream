@@ -5,6 +5,8 @@ RSpec.describe Bookshelf::Actions::Home::Index do
 
   it "works" do
     response = subject.call(params)
-    expect(response).to be_successful
+    expect(response).to(be_successful)
+    expect(response.body).to(eq(["Turbo!"]))
+    expect(response.headers["Content-Type"]).to(eq("text/vnd.turbo-stream.html"))
   end
 end
